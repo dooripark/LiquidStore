@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liquidstore.dao.MemberDAO">
+
+    <insert id="insertMember" parameterType="com.liquidstore.model.Member">
+        INSERT INTO members (username, password, name, email, address, role)
+        VALUES (#{username}, #{password}, #{name}, #{email}, #{address}, #{role})
+    </insert>
+
+    <select id="getMemberByUsername" resultType="com.liquidstore.model.Member">
+        SELECT id, username, password, name, email, address, role
+        FROM members
+        WHERE username = #{username}
+    </select>
+
+    <select id="getAllMembers" resultType="com.liquidstore.model.Member">
+        SELECT id, username, password, name, email, address, role
+        FROM members
+    </select>
+
+    <delete id="deleteMember" parameterType="int">
+        DELETE FROM members WHERE id = #{id}
+    </delete>
+
+</mapper>
